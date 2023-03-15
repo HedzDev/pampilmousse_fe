@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { Listbox } from '@headlessui/react';
 
 export type PlaceProps = {
   name: string;
   description: string;
   tags: string[];
-  zipCode: number;
+  zipCode: string;
   href: string;
   imageSrc: string;
   imageAlt: string;
 };
 
 export default function Home() {
+  //States
   const [places, setPlaces] = useState([]);
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState<string>('');
   const [tagsFilters, setTagsFilters] = useState<string[]>([]);
 
+  //Tags names
   const tags = ['change-table', 'playground', 'child-chair'];
 
-  //console.log('tagsFilters', tagsFilters);
-
+  //Fetch places from API
   useEffect(() => {
     fetch('http://localhost:4000/places/getPlaces')
       .then((res) => res.json())
@@ -28,6 +30,7 @@ export default function Home() {
       });
   }, []);
 
+  //Update tagsFilters state when a tag is checked or unchecked and add or remove a tag from the array
   function updateTagsFilters(checked: any, tag: string) {
     if (checked) {
       setTagsFilters((prev) => [...prev, tag]);
@@ -36,20 +39,25 @@ export default function Home() {
     }
   }
 
+  //Filter places by tags and zipCode
   const filteredPlaces =
     tagsFilters.length === 0
       ? places
-      : places.filter((place) =>
-          tagsFilters.every((tag) => place.tags.includes(tag))
-        );
+      : places
+          .filter((place) =>
+            tagsFilters.every((tag) => place.tags.includes(tag))
+          )
+          .filter((place) => place.zipCode.toString().startsWith(zipCode));
 
+  //Create buttons for each tag and add a class if the tag is checked
   const buttonCategories = tags.map((tag, i) => {
     const isActive = tagsFilters.includes(tag);
-    const buttonsClasses = `px-4 py-2 rounded-full hover ${
+    const buttonsClasses = `w-48 px-4 py-2 rounded-xl ${
       isActive
         ? 'bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white'
         : 'bg-gray-200 text-gray-900'
     }`;
+
     return (
       <button
         key={i}
@@ -68,6 +76,7 @@ export default function Home() {
     );
   });
 
+  //Create a card for each place and display it
   const placesDisplayed = filteredPlaces.map((place: PlaceProps, i) => {
     return (
       <a
@@ -93,13 +102,16 @@ export default function Home() {
             {place.zipCode}
           </p>
         </div>
-        <p>
+        <div>
           {place.tags.map((tag, i) => (
-            <span className="mt-1 text-xs font-medium text-gray-900" key={i}>
+            <div
+              className="mt-1 border text-center text-xs font-medium text-gray-900"
+              key={i}
+            >
               {tag}
-            </span>
+            </div>
           ))}
-        </p>
+        </div>
       </a>
     );
   });
@@ -115,14 +127,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="">
-        <p>LOGO</p>
-      </header>
+
       <main className="mt-32 flex min-h-screen flex-col items-center py-2">
-        <h1 className="mb-20">Welcome to Friendly!</h1>
-        <div>{buttonCategories}</div>
-        <form>
-          {/* <input type="text" placeholder="75,94,92 ..." /> */}
+        <h1 className="">Welcome to Friendly!</h1>
+        <p>
+          Comment ça marche ?
+          <br />
+          1. Choisissez un ou plusieurs filtres
+          <br />
+          2. Choisissez un département
+          <br />
+          3. Cliquez sur les lieux qui vous intéressent
+          <br />
+          <br />
+          <br />
+        </p>
+        <div className="space-x-4">{buttonCategories}</div>
+        <div className="">
           <select onChange={(e) => setZipCode(e.target.value)}>
             <option value="75">Paris</option>
             <option value="92">Hauts-de-Seine</option>
@@ -132,9 +153,13 @@ export default function Home() {
             <option value="95">Val D'Oise</option>
             <option value="91">Essonne</option>
           </select>
-        </form>
+        </div>
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {placesDisplayed}
+          {placesDisplayed.length === 0 ? (
+            <p>Pas de lieux correspondant à la recherche 😓</p>
+          ) : (
+            placesDisplayed
+          )}
         </div>
       </main>
     </>

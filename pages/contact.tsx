@@ -1,7 +1,7 @@
-import Contact from '@/containers/Contact';
+import ContactForm from '@/containers/ContactForm';
 
 function contact() {
-  return <Contact />;
+  return <ContactForm />;
 }
 
 export default contact;

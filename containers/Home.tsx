@@ -36,7 +36,7 @@ export default function Home() {
 
   //Fetch places from API
   useEffect(() => {
-    fetch('http://friendly-be.vercel.app/places/getPlaces')
+    fetch('https://friendly-be.vercel.app/places/getPlaces')
       .then((res) => res.json())
       .then((data) => {
         setPlaces(data.places);

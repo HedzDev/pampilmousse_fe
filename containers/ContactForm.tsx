@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InputField from '@/components/InputField';
 import TextareaField from '@/components/TextareaField';
 import Head from 'next/head';
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 function ContactForm() {
@@ -17,10 +17,10 @@ function ContactForm() {
     e.preventDefault();
 
     emailjs
-      .sendForm(
+      .send(
         process.env.SERVICE_ID as string,
         process.env.TEMPLATE_ID as string,
-        values,
+        values as string | any,
         process.env.PUBLIC_KEY as string
       )
       .then(
@@ -66,7 +66,7 @@ function ContactForm() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="h-screen">
-        <div className="bg-green-300 lg:grid lg:h-2/3 lg:grid-cols-2 lg:gap-6 ">
+        <div className="bg-green-300 lg:grid lg:h-2/3 lg:grid-cols-2 lg:gap-6">
           <div className="flex flex-col justify-center text-center md:text-left lg:p-40">
             <h1 className="text-4xl text-white md:text-5xl lg:text-6xl">
               Un endroit à nous conseiller ?

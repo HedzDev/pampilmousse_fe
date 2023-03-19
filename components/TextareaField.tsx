@@ -12,7 +12,7 @@ function TextareaField(props: any) {
         <textarea
           onChange={handleChange}
           name={name}
-          rows="4"
+          rows={4}
           className="w-full border-b-2 bg-gray-100 p-2 outline-none"
           value={value}
         ></textarea>

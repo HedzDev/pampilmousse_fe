@@ -36,7 +36,7 @@ export default function Home() {
 
   //Fetch places from API
   useEffect(() => {
-    fetch('https://friendly-be.vercel.app/places/getPlaces')
+    fetch('https://pampilmousse-be.vercel.app/places/getPlaces')
       .then((res) => res.json())
       .then((data) => {
         setPlaces(data.places);
@@ -72,10 +72,10 @@ export default function Home() {
   //Create buttons for each tag and add a class if the tag is checked
   const buttonCategories = tags.map((tag, i) => {
     const isActive = tagsFilters.includes(tag);
-    const buttonsClasses = `w-48 px-4 py-2 rounded-xl ${
+    const buttonsClasses = `w-48 px-4 py-2 rounded-xl hover:bg-cyan-500 transition-all duration-400 ease-in-out hover:outline outline-white hover:text-white ${
       isActive
-        ? 'bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white'
-        : 'bg-gray-200 text-gray-900'
+        ? 'bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white outline outline-white'
+        : 'bg-white text-gray-900'
     }`;
 
     return (
@@ -104,23 +104,23 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Friendly | Home</title>
+        <title>Pampilmousse | Home</title>
         <meta
-          name="Friendly, pour des sorties réussies"
-          content="Friendly, pour des sorties réussies"
+          name="Pampilmousse, pour des sorties réussies"
+          content="Pampilmousse, pour des sorties réussies"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="h-screen">
-        <div className="bg-red-300 lg:grid lg:h-2/3">
-          <div className="flex flex-col items-center  py-2 pt-32">
+        <div className=" bg-red-300 lg:grid lg:h-2/3">
+          <div className="flex flex-col items-center py-2 pt-32">
             <h1
               className="mb-20
             text-center text-xl text-white"
             >
-              Bienvenue chez Friendly <br />
+              Bienvenue chez Pampilmousse <br />
               Le spécialiste des sorties réussies !
             </h1>
 
@@ -152,7 +152,7 @@ export default function Home() {
                             className={({ active }) =>
                               `relative left-0 cursor-default select-none py-2 pl-10 pr-4 ${
                                 active
-                                  ? 'bg-amber-100 text-amber-900'
+                                  ? 'bg-red-100 text-red-900'
                                   : 'text-gray-900'
                               }`
                             }
@@ -168,7 +168,7 @@ export default function Home() {
                                   {zip.name}
                                 </span>
                                 {selected ? (
-                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600">
                                     <CheckIcon
                                       className="h-5 w-5"
                                       aria-hidden="true"

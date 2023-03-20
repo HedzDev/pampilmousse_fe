@@ -57,7 +57,7 @@ function ContactForm() {
   return (
     <>
       <Head>
-        <title>Friendly | Contact</title>
+        <title>Pampilmousse | Contact</title>
         <meta
           name="contact form for friendly connection"
           content="Friendly, pour des sorties réussies"
@@ -71,8 +71,8 @@ function ContactForm() {
             <h1 className="text-4xl text-white md:text-5xl lg:text-6xl">
               Un endroit à nous conseiller ?
             </h1>
-            <p className="font-medium uppercase text-black  opacity-40">
-              Contactez Nous :)
+            <p className="mt-10 text-lg font-medium uppercase text-black opacity-50">
+              Contactez-nous !
             </p>
           </div>
           <div className="rounded bg-white p-5 pt-6 pb-8 shadow-xl lg:mt-48 lg:mr-48">

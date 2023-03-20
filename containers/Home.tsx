@@ -58,16 +58,18 @@ export default function Home() {
   }
 
   //Filter places by tags and zipCode
-  const filteredPlaces =
-    tagsFilters.length === 0
-      ? places
-      : places
-          .filter((place: { tags: string[] }) =>
-            tagsFilters.every((tag) => place.tags.includes(tag))
-          )
-          .filter((place: { zipCode: number }) =>
-            place.zipCode.toString().startsWith(zipCode)
-          );
+  let filteredPlaces = places;
+
+  if (tagsFilters.length > 0) {
+    filteredPlaces = filteredPlaces.filter((place: { tags: string[] }) =>
+      tagsFilters.every((tag) => place.tags.includes(tag))
+    );
+  }
+  if (zipCode) {
+    filteredPlaces = filteredPlaces.filter((place: { zipCode: number }) =>
+      place.zipCode.toString().startsWith(zipCode)
+    );
+  }
 
   //Create buttons for each tag and add a class if the tag is checked
   const buttonCategories = tags.map((tag, i) => {

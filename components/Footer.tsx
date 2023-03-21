@@ -6,22 +6,21 @@ function Footer() {
 
   return (
     <>
-      <div className="h-56 bg-gray-600 text-white">
-        <div className="grid grid-cols-2">
-          <div className="text-l flex flex-col text-white">
-            <p className="text-2xl font-bold">Pampilmousse</p>
-            <Link className="" href="/">
-              Home
-            </Link>
-            <Link className="" href="/about">
-              À propos
-            </Link>
-            <Link className="" href="/contact">
-              Contact
-            </Link>
-          </div>
+      <div className="relative h-56 bg-gray-600 p-10 text-white">
+        <p className="text-2xl font-bold text-red-300">Pampilmousse</p>
+        <div className="mt-6 inline-flex flex-col">
+          <Link className="text-m hover:text-red-300" href="/">
+            Home
+          </Link>
+          <Link className="text-m hover:text-red-300" href="/about">
+            À propos
+          </Link>
+          <Link className="text-m hover:text-red-300" href="/contact">
+            Contact
+          </Link>
         </div>
-        <div className="pt-20 text-center text-xs">
+
+        <div className="absolute bottom-2 right-0 left-0 text-center text-xs">
           copyright © {year} - Made with 💚 by BabaHedz
         </div>
       </div>

@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Head from 'next/head';
-import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import PlaceCard from '@/components/PlaceCard';
+import ListboxComp from '@/components/ListboxComp';
+import CheckboxComp from '@/components/CheckboxComp';
 
 export type PlaceProps = {
   name: string;
@@ -32,7 +32,10 @@ export default function Home() {
   const [places, setPlaces] = useState([]);
   const [zipCode, setZipCode] = useState('');
   const [tagsFilters, setTagsFilters] = useState<string[]>([]);
-  const [selectedZipCode, setSelectedZipCode] = useState(zipCodes[0]);
+  const [selectedZipCode, setSelectedZipCode] = useState<{
+    code: number;
+    name: string;
+  }>(zipCodes[0]);
 
   //Fetch places from API
   useEffect(() => {
@@ -44,11 +47,11 @@ export default function Home() {
   }, []);
 
   //Update tagsFilters state when a tag is checked or unchecked and add or remove a tag from the array
-  function updateTagsFilters(checked: any, tag: string) {
+  function updateTagsFilters(checked: boolean, tag: string) {
     if (checked) {
-      setTagsFilters((prev) => [...prev, tag]);
+      setTagsFilters([...tagsFilters, tag]);
     } else {
-      setTagsFilters((prev) => prev.filter((t) => t !== tag));
+      setTagsFilters(tagsFilters.filter((t) => t !== tag));
     }
   }
 
@@ -71,30 +74,12 @@ export default function Home() {
     );
   }
 
-  //Create buttons for each tag and add a class if the tag is checked
-  const buttonCategories = tags.map((tag, i) => {
-    const isActive = tagsFilters.includes(tag);
-    const buttonsClasses = `w-48 px-4 py-2 rounded-xl hover:bg-cyan-500 transition-all duration-400 ease-in-out hover:outline outline-white hover:text-white ${
-      isActive
-        ? 'bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white outline outline-white'
-        : 'bg-white text-gray-900'
-    }`;
-
+  //Create checkboxes for each tag and add a class if the tag is checked
+  const checkboxCategories = tags.map((tag, i) => {
     return (
-      <button
-        key={i}
-        type="button"
-        name={tag}
-        className={buttonsClasses}
-        onClick={(e) =>
-          updateTagsFilters(
-            (e.target as HTMLButtonElement).classList.toggle('bg-cyan-500'),
-            tag
-          )
-        }
-      >
-        {tag}
-      </button>
+      <Fragment key={i}>
+        <CheckboxComp updateTagsFilters={updateTagsFilters} tag={tag} />
+      </Fragment>
     );
   });
 
@@ -126,71 +111,21 @@ export default function Home() {
               Le spécialiste des sorties réussies !
             </h1>
 
-            <div className="space-x-4">{buttonCategories}</div>
+            <div className="space-x-4">{checkboxCategories}</div>
 
             <div className="my-10 w-48">
-              <Listbox value={selectedZipCode} onChange={handleSelectedZipCode}>
-                <div className="relative mt-1">
-                  <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                    <span className="block truncate">
-                      {selectedZipCode.name}
-                    </span>
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                      <ChevronUpDownIcon
-                        className="h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                    </span>
-                    <Transition
-                      as={Fragment}
-                      leave="transition ease-in duration-100"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <Listbox.Options className="absolute left-0 z-10 mt-3 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                        {zipCodes.map((zip, zipId) => (
-                          <Listbox.Option
-                            key={zipId}
-                            className={({ active }) =>
-                              `relative left-0 cursor-default select-none py-2 pl-10 pr-4 ${
-                                active
-                                  ? 'bg-red-100 text-red-900'
-                                  : 'text-gray-900'
-                              }`
-                            }
-                            value={zip}
-                          >
-                            {({ selected }) => (
-                              <>
-                                <span
-                                  className={`block truncate ${
-                                    selected ? 'font-medium' : 'font-normal'
-                                  }`}
-                                >
-                                  {zip.name}
-                                </span>
-                                {selected ? (
-                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600">
-                                    <CheckIcon
-                                      className="h-5 w-5"
-                                      aria-hidden="true"
-                                    />
-                                  </span>
-                                ) : null}
-                              </>
-                            )}
-                          </Listbox.Option>
-                        ))}
-                      </Listbox.Options>
-                    </Transition>
-                  </Listbox.Button>
-                </div>
-              </Listbox>
+              <ListboxComp
+                selectedZipCode={selectedZipCode}
+                handleSelectedZipCode={handleSelectedZipCode}
+                zipCodes={zipCodes}
+              />
             </div>
 
-            <div className="grid w-1/2 grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="relative grid w-1/2 grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
               {placesDisplayed.length === 0 ? (
-                <p>Pas de lieux correspondant à la recherche 😓</p>
+                <p className="absolute top-20 left-0 right-0 text-center text-lg">
+                  Oups! Pas de lieu correspondant à la recherche 😓
+                </p>
               ) : (
                 placesDisplayed
               )}

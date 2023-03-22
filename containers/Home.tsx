@@ -101,7 +101,7 @@ export default function Home() {
       </Head>
 
       <main className="h-screen">
-        <div className=" bg-red-300 lg:grid lg:h-2/3">
+        <div className="bg-red-300 py-16 lg:grid lg:h-2/3">
           <div className="flex flex-col items-center py-2 pt-32">
             <h1
               className="mb-20
@@ -111,7 +111,9 @@ export default function Home() {
               Le spécialiste des sorties réussies !
             </h1>
 
-            <div className="space-x-4">{checkboxCategories}</div>
+            <div className="flex lg:flex-row lg:space-x-4">
+              {checkboxCategories}
+            </div>
 
             <div className="my-10 w-48">
               <ListboxComp

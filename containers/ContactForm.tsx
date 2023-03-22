@@ -65,17 +65,17 @@ function ContactForm() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-screen">
-        <div className="bg-green-300 lg:grid lg:h-2/3 lg:grid-cols-2 lg:gap-6">
+      <main className="h-screen">
+        <div className="bg-green-300 px-5 py-44 lg:grid lg:h-2/3 lg:grid-cols-2 lg:gap-6">
           <div className="flex flex-col justify-center text-center md:text-left lg:p-40">
-            <h1 className="text-4xl text-white md:text-5xl lg:text-6xl">
+            <h1 className="text-3xl text-white md:text-5xl lg:text-6xl">
               Un endroit à nous conseiller ?
             </h1>
             <p className="mt-10 text-lg font-medium uppercase text-black opacity-50">
               Contactez-nous !
             </p>
           </div>
-          <div className="rounded bg-white p-5 pt-6 pb-8 shadow-xl lg:mt-48 lg:mr-48">
+          <div className="mt-8 rounded bg-white p-5 pt-6 pb-8 shadow-xl lg:mt-48 lg:mr-48">
             {status && renderAlert()}
             <form onSubmit={handleSubmit}>
               <h3 className="mb-7 text-xl font-semibold text-gray-700">
@@ -112,7 +112,7 @@ function ContactForm() {
             </form>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

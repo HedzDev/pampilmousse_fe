@@ -13,8 +13,8 @@ function About() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-screen">
-        <div className="flex flex-col content-center justify-center bg-yellow-400 pt-[30rem] pl-96 lg:h-2/3">
+      <main className="h-screen">
+        <div className="flex  content-center justify-center bg-yellow-400 py-44 lg:h-2/3">
           <h1 className="mb-6 text-4xl">Pampilmousse</h1>
 
           <p className="w-1/3 pl-12">
@@ -30,7 +30,7 @@ function About() {
             C'est là que l'idée a émergé !
           </p>
         </div>
-      </div>
+      </main>
     </>
   );
 }

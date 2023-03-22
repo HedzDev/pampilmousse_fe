@@ -15,7 +15,7 @@ function classNames(...classes: any) {
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 flex justify-between  py-6 text-white">
+    <header className="fixed top-0 left-0 right-0 flex justify-between py-6 text-white">
       <Link href="/" className="pl-9 text-4xl font-bold">
         Pampilmousse
       </Link>

@@ -10,9 +10,8 @@ export default function CheckboxComp(props: any) {
       <FormControlLabel
         control={
           <Checkbox
-            className="text-white"
             sx={{
-              color: pink[800],
+              color: 'white',
               '&.Mui-checked': {
                 color: pink[600],
               },

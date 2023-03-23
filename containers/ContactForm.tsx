@@ -59,13 +59,13 @@ function ContactForm() {
       <Head>
         <title>Pampilmousse | Contact</title>
         <meta
-          name="contact form for friendly connection"
-          content="Friendly, pour des sorties réussies"
+          name="Contact form for Pampilmousse connection"
+          content="Pampilmousse, pour des sorties réussies"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-screen">
+      <main className="min-h-screen">
         <div className="bg-green-300 px-5 py-44 lg:grid lg:h-2/3 lg:grid-cols-2 lg:gap-6">
           <div className="flex flex-col justify-center text-center md:text-left lg:p-40">
             <h1 className="text-3xl text-white md:text-5xl lg:text-6xl">
@@ -124,126 +124,3 @@ const renderAlert = () => (
 );
 
 export default ContactForm;
-
-// import React, { useRef } from 'react';
-// import Head from 'next/head';
-// import emailjs from '@emailjs/browser';
-
-// export default function ContactForm() {
-//   const form = useRef<HTMLFormElement>(null);
-
-//   const sendEmail = (e: any) => {
-//     e.preventDefault();
-//     const nameInput = form.current?.elements.namedItem(
-//       'name'
-//     ) as HTMLInputElement;
-//     const emailInput = form.current?.elements.namedItem(
-//       'email'
-//     ) as HTMLInputElement;
-//     const messageInput = form.current?.elements.namedItem(
-//       'message'
-//     ) as HTMLInputElement;
-
-//     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-//     if (
-//       !nameInput.value ||
-//       nameInput.value.trim().length == 0 ||
-//       !emailInput.value ||
-//       emailInput.value.trim().length == 0 ||
-//       !emailRegex.test(emailInput.value) ||
-//       !messageInput.value ||
-//       messageInput.value.trim().length == 0
-//     ) {
-//       alert('Veuillez remplir tous les champs du formulaire');
-//       return;
-//     }
-
-//     emailjs
-//       .sendForm(
-//         process.env.SERVICE_ID as string,
-//         process.env.TEMPLATE_ID as string,
-//         form.current as HTMLFormElement,
-//         process.env.PUBLIC_KEY as string
-//       )
-//       .then(
-//         (result) => {
-//           console.log(result.text);
-//         },
-//         (error) => {
-//           console.log(error.text);
-//         }
-//       );
-
-//     form.current?.reset();
-//   };
-//   return (
-//     <>
-//       <Head>
-//         <title>Friendly | Contact</title>
-//         <meta
-//           name="contact form for friendly connection"
-//           content="Friendly, pour des sorties réussies"
-//         />
-//         <meta name="viewport" content="width=device-width, initial-scale=1" />
-//         <link rel="icon" href="/favicon.ico" />
-//       </Head>
-//       <main>
-//         <div className="pt-72 text-center">
-//           <p>Pour nous contacter c'est ici ⬇️</p>
-//         </div>
-//         <div className="flex h-screen justify-center pt-28 md:col-span-2 md:mt-0">
-//           <form ref={form} onSubmit={sendEmail}>
-//             <div className="overflow-hidden shadow sm:rounded-md">
-//               <div className="bg-white px-4 py-5 sm:p-6">
-//                 <div className="grid grid-cols-6 gap-6">
-//                   <div className="col-span-6 sm:col-span-3">
-//                     <label className="block text-sm font-medium leading-6 text-gray-900">
-//                       Nom
-//                     </label>
-//                     <input
-//                       type="text"
-//                       id="name"
-//                       name="name"
-//                       placeholder="Doe"
-//                       className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-//                     />
-//                   </div>
-//                   <div className="col-span-6 sm:col-span-3">
-//                     <label className="block text-sm font-medium leading-6 text-gray-900">
-//                       Email
-//                     </label>
-//                     <input
-//                       type="text"
-//                       id="email"
-//                       name="email"
-//                       placeholder="john.doe@gmail.com"
-//                       className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-//                     />
-//                   </div>
-//                 </div>
-//                 <div className="col-span-6 sm:col-span-3">
-//                   <label className="mt-7 block text-sm font-medium leading-6 text-gray-900">
-//                     Message
-//                   </label>
-//                   <textarea
-//                     name="message"
-//                     id="message"
-//                     placeholder="Votre message..."
-//                     className="mt-2 mb-7 block h-36 w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-//                   />
-//                 </div>
-
-//                 <input
-//                   type="submit"
-//                   value="Envoyer"
-//                   className="mt-4 w-fit rounded border py-2 px-6 transition-all duration-300 ease-in-out hover:bg-slate-600 hover:text-white"
-//                 />
-//               </div>
-//             </div>
-//           </form>
-//         </div>
-//       </main>
-//     </>
-//   );
-// }

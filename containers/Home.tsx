@@ -37,8 +37,6 @@ export default function Home() {
     name: string;
   }>(zipCodes[0]);
 
-  console.log(tagsFilters);
-
   //Fetch places from API
   useEffect(() => {
     fetch('https://pampilmousse-be.vercel.app/places/getPlaces')
@@ -102,18 +100,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen">
+      <main className="min-h-screen">
         <div className="bg-red-300 py-16 lg:grid lg:h-2/3">
           <div className="flex flex-col items-center py-2 pt-32">
             <h1
-              className="mb-20
+              className="mb-10
             text-center text-xl text-white"
             >
-              Bienvenue chez Pampilmousse <br />
-              Le spécialiste des sorties réussies !
+              Pampilmousse
+              <br />
+              Pour des sorties réussies !
             </h1>
 
-            <div className="flex lg:flex-row lg:space-x-4">
+            <div className="flex flex-col sm:flex-row  sm:space-x-4">
               {checkboxCategories}
             </div>
 

@@ -37,6 +37,8 @@ export default function Home() {
     name: string;
   }>(zipCodes[0]);
 
+  console.log(tagsFilters);
+
   //Fetch places from API
   useEffect(() => {
     fetch('https://pampilmousse-be.vercel.app/places/getPlaces')
@@ -47,11 +49,11 @@ export default function Home() {
   }, []);
 
   //Update tagsFilters state when a tag is checked or unchecked and add or remove a tag from the array
-  function updateTagsFilters(checked: boolean, tag: string) {
+  function updateTagsFilters(checked: any, tag: string) {
     if (checked) {
       setTagsFilters([...tagsFilters, tag]);
     } else {
-      setTagsFilters(tagsFilters.filter((t) => t !== tag));
+      setTagsFilters((prev) => prev.filter((t) => t !== tag));
     }
   }
 

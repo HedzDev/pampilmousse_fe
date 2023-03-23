@@ -21,7 +21,7 @@ export default function CheckboxComp(props: any) {
         label={tag}
         onChange={(event) => {
           const { target } = event;
-          updateTagsFilters((target as HTMLInputElement).value, tag);
+          updateTagsFilters((target as HTMLInputElement).checked, tag);
         }}
         className="text-white"
       />

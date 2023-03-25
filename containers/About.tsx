@@ -14,16 +14,16 @@ function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-screen">
-        <div className="flex h-screen flex-col content-center justify-center bg-yellow-400 px-10 sm:px-20 lg:h-2/3">
+        <div className="flex h-screen flex-col content-center justify-center bg-yellow-400 px-10 sm:px-20">
           <h1 className="mb-6 text-4xl">Pampilmousse</h1>
 
           <p className="">
-            Pampilmousse est né dans la tête de deux parents qui avait une
-            petite fille formidable et avec laquelle il passait beaucoup de
-            temps dans les cafés, restaurants, musées ou tout autres lieux de
-            divertissement de la capitale, mais tout ces endroits n'étaient
-            malheureusement pas équipé pour recevoir dans de bonnes conditions
-            notre fille chérie !
+            <span className="text-2xl">P</span>ampilmousse est né dans la tête
+            de deux parents qui avait une petite fille formidable et avec
+            laquelle il passait beaucoup de temps dans les cafés, restaurants,
+            musées ou tout autres lieux de divertissement de la capitale, mais
+            tout ces endroits n'étaient malheureusement pas équipés pour
+            recevoir dans de bonnes conditions notre fille chérie !
             <br />
             <br />
             <br />

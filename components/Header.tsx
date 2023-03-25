@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 
@@ -15,8 +16,15 @@ function classNames(...classes: any) {
 }
 
 export default function Header() {
+  const router = useRouter();
+
+  const updatedNavigation = navigation.map((item) => ({
+    ...item,
+    current: router.pathname === item.href,
+  }));
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-30 flex h-20 justify-between bg-red-300   py-6 text-white">
+    <header className="fixed top-0 left-0 right-0 z-30 flex h-20 justify-between bg-red-300 py-6 text-white">
       {/* <Link href="/" className="pl-9 text-4xl font-bold">
         Pampilmousse
       </Link> */}
@@ -64,16 +72,16 @@ export default function Header() {
                       </Link>
                     </div>
                     <div className="hidden sm:ml-6 sm:block">
-                      <div className="flex space-x-4">
-                        {navigation.map((item) => (
+                      <div className="flex h-20 items-center space-x-4">
+                        {updatedNavigation.map((item) => (
                           <Link
                             key={item.name}
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? 'bg-gray-900 text-white'
-                                : 'text-white hover:border-y-2',
-                              'py-2 text-sm font-medium'
+                                ? 'border-b-2 bg-gray-900 px-1 py-2 text-white'
+                                : 'text-white hover:border-b-2',
+                              'py text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
                           >
@@ -120,6 +128,13 @@ export default function Header() {
           Contact
         </Link> */}
       </nav>
+      <Image
+        src="/logo-pampil2.png"
+        alt="logo"
+        width={200}
+        height={200}
+        className="absolute hidden h-12 w-12 sm:right-10 sm:flex sm:h-20 sm:w-20"
+      />
     </header>
   );
 }

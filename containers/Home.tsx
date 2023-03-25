@@ -101,7 +101,7 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen">
-        <div className="bg-red-300 py-16 lg:grid lg:h-2/3">
+        <div className="bg-red-300 py-16">
           <div className="flex flex-col items-center py-2 pt-32">
             <h1
               className="mb-10
@@ -124,9 +124,9 @@ export default function Home() {
               />
             </div>
 
-            <div className="relative grid w-1/2 grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="relative grid w-1/2 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
               {placesDisplayed.length === 0 ? (
-                <p className="absolute top-20 left-0 right-0 text-center text-lg">
+                <p className="rounded-md border p-3 text-center">
                   Oups! Pas de lieu correspondant à la recherche 😓
                 </p>
               ) : (

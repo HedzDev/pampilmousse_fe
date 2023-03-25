@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <>
-      <div className="relative h-56 bg-gray-600 p-10 text-white">
+      <div className="relative h-56 bg-black p-10 text-white">
         <p className="text-2xl font-bold text-red-300">Pampilmousse</p>
         <div className="mt-6 inline-flex flex-col">
           <Link className="text-m hover:text-red-300" href="/">

@@ -1,4 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import Stack from '@mui/material/Stack';
+import { CircularProgress } from '@mui/material';
 import Head from 'next/head';
 import PlaceCard from '@/components/PlaceCard';
 import ListboxComp from '@/components/ListboxComp';
@@ -55,7 +57,7 @@ export default function Home() {
       setTagsFilters((prev) => prev.filter((t) => t !== tag));
     }
   }
-
+  // Update zipCode state when a zipCode is selected in the listbox
   function handleSelectedZipCode(value: any) {
     setSelectedZipCode(value);
     setZipCode(value.code.toString());
@@ -127,9 +129,14 @@ export default function Home() {
 
             <div className="relative grid w-1/2 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
               {placesDisplayed.length === 0 ? (
-                <p className="rounded-md border p-3 text-center">
-                  Oups! Pas de lieu correspondant à la recherche 😓
-                </p>
+                // <p className="rounded-md border p-3 text-center">
+                //   Oups! Pas de lieu correspondant à la recherche 😓
+                // </p>
+                <div className="flex items-center justify-center">
+                  <Stack>
+                    <CircularProgress color="error" />
+                  </Stack>
+                </div>
               ) : (
                 placesDisplayed
               )}

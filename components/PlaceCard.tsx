@@ -34,26 +34,28 @@ export default function PlaceCard(props: any) {
             unoptimized
             className="h-full w-full object-cover object-center"
           />
-          <div className="flex justify-end rounded-lg border p-2 ">
-            {categoriesList.map((category: any, i: any) => {
-              if (place.categories.includes(category.type)) {
-                return (
-                  <div className=" text-2xl" key={i}>
-                    {category.icon}
-                  </div>
-                );
-              }
-            })}
-          </div>
         </div>
         <h2 className="pt-2 text-lg font-medium text-gray-900">{place.name}</h2>
-        <div className="flex justify-between py-3">
-          <p className="mt-1  w-2/3 text-xs font-medium text-gray-600">
+        <div className="py flex flex-col-reverse justify-between">
+          <p className="mt-4 w-2/3 text-xs font-medium text-gray-600">
             {place.description}
           </p>
-          <p className="mt-1 pr-2 text-sm font-medium text-gray-900">
-            {place.zipCode}
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="pr-2 text-sm font-medium text-gray-900">
+              {place.zipCode}
+            </p>
+            <div className="flex space-x-1">
+              {categoriesList.map((category: any, i: any) => {
+                if (place.categories.includes(category.type)) {
+                  return (
+                    <div className="text-xl" key={i}>
+                      {category.icon}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </div>
         </div>
         <div className="">
           {place.tags.map((tag: any, i: any) => (

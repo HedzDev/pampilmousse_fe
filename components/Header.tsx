@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -7,39 +7,68 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 
 const navigation = [
   { name: 'Home', href: '/', current: false },
-  { name: 'À propos', href: '/about', current: false },
-  { name: 'Contact', href: '/contact', current: false },
+  {
+    name: 'À propos',
+    href: '/about',
+    current: false,
+  },
+  {
+    name: 'Contact',
+    href: '/contact',
+    current: false,
+  },
 ];
 
 function classNames(...classes: any) {
+  //
   return classes.filter(Boolean).join(' ');
 }
 
 export default function Header() {
   const router = useRouter();
+  const [bgColor, setBgColor] = useState('');
+
+  useEffect(() => {
+    // Change the background color of the header depending on the page
+    switch (router.pathname) {
+      case '/':
+        setBgColor('bg-red-300');
+        break;
+      case '/about':
+        setBgColor('bg-yellow-400');
+        break;
+      case '/contact':
+        setBgColor('bg-green-300');
+        break;
+      default:
+        break;
+    }
+  }, [router.pathname]);
 
   const updatedNavigation = navigation.map((item) => ({
+    //
     ...item,
     current: router.pathname === item.href,
   }));
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-30 flex h-20 justify-between bg-red-300 py-6 text-white">
-      {/* <Link href="/" className="pl-9 text-4xl font-bold">
-        Pampilmousse
-      </Link> */}
+    <header
+      className={`fixed top-0 left-0 right-0 z-30 flex h-20 justify-between py-6 text-white ${bgColor}`}
+    >
       <nav className="space-x-7 pr-9">
         <Disclosure
           as="nav"
           className="fixed top-0 left-0 right-0 flex justify-between py-6 text-white"
         >
-          {({ open }) => (
+          {(
+            { open } // open is a boolean value that indicates if the menu is open or not
+          ) => (
             <>
               <div className="px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center">
                   <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     {/* Mobile menu button*/}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-gray-700 hover:text-white focus:outline-none ">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-gray-400 hover:text-white focus:outline-none ">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -56,14 +85,6 @@ export default function Header() {
                   </div>
                   <div className=" flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div className=" flex flex-shrink-0 items-center">
-                      {/* <Link href="/" className="pl-16 sm:hidden">
-                        <Image
-                          src="/logo-pampil copie.png"
-                          width={55}
-                          height={55}
-                          alt="logo"
-                        ></Image>
-                      </Link> */}
                       <Link
                         href="/"
                         className="hidden pl-9 text-4xl font-bold sm:flex"
@@ -93,18 +114,18 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-
+              {/* Mobile menu, show/hide based on menu state. */}
               <Disclosure.Panel className="sm:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3">
-                  {navigation.map((item) => (
+                  {updatedNavigation.map((item) => (
                     <Disclosure.Button
                       key={item.name}
                       as="a"
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? 'bg-gray-900 text-white'
-                          : 'text-white hover:bg-gray-700 hover:text-white',
+                          ? 'bg-gray-400 text-white'
+                          : 'text-white hover:bg-gray-300 hover:text-white',
                         'block rounded-md px-3 py-2 text-base font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -117,24 +138,14 @@ export default function Header() {
             </>
           )}
         </Disclosure>
-
-        {/* <Link href="/" className="p-2 hover:border-y-2">
-          Home
-        </Link>
-        <Link href="/about" className="  p-2 hover:border-y-2 ">
-          À propos
-        </Link>
-        <Link href="/contact" className="  p-2 hover:border-y-2 ">
-          Contact
-        </Link> */}
+        <Image
+          src="/logo-pampil2.png"
+          alt="logo"
+          width={200}
+          height={200}
+          className="absolute right-[45%] h-12 w-12 sm:right-20 sm:flex sm:h-20 sm:w-20"
+        />
       </nav>
-      <Image
-        src="/logo-pampil2.png"
-        alt="logo"
-        width={200}
-        height={200}
-        className="absolute hidden h-12 w-12 sm:right-10 sm:flex sm:h-20 sm:w-20"
-      />
     </header>
   );
 }

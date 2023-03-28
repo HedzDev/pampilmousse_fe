@@ -21,7 +21,8 @@ function Footer() {
         </div>
 
         <div className="absolute bottom-2 right-0 left-0 text-center text-xs">
-          copyright © {year} - Made with 💚 by BabaHedz
+          copyright © {year} - Made with 💚 by
+          <span className="text-black">Baba</span>Hedz
         </div>
       </div>
     </>

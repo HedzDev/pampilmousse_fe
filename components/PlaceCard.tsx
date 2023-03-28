@@ -6,6 +6,15 @@ export default function PlaceCard(props: any) {
   const { place } = props;
   const src = place.imageSrc;
 
+  //Places categories
+  const categoriesList = [
+    { type: 'Restaurant', icon: '🍽️' },
+    { type: 'Bar', icon: '🍸' },
+    { type: 'Café', icon: '☕️' },
+    { type: 'Musée', icon: '🎨' },
+    { type: 'Cinéma', icon: '🎥' },
+    { type: 'Médecin', icon: '👨‍⚕️' },
+  ];
   return (
     <>
       <a
@@ -14,7 +23,7 @@ export default function PlaceCard(props: any) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+        <div className="aspect-w-1 aspect-h-1  w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
           <Image
             loader={() => src}
             src={src}
@@ -25,10 +34,19 @@ export default function PlaceCard(props: any) {
             unoptimized
             className="h-full w-full object-cover object-center"
           />
+          <div className="flex justify-end rounded-lg border p-2 ">
+            {categoriesList.map((category: any, i: any) => {
+              if (place.categories.includes(category.type)) {
+                return (
+                  <div className=" text-2xl" key={i}>
+                    {category.icon}
+                  </div>
+                );
+              }
+            })}
+          </div>
         </div>
-        <h2 className="t-1 pt-2 text-lg font-medium text-gray-900">
-          {place.name}
-        </h2>
+        <h2 className="pt-2 text-lg font-medium text-gray-900">{place.name}</h2>
         <div className="flex justify-between py-3">
           <p className="mt-1  w-2/3 text-xs font-medium text-gray-600">
             {place.description}

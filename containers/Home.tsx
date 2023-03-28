@@ -12,6 +12,7 @@ export type PlaceProps = {
   href: string;
   imageSrc: string;
   imageAlt: string;
+  categories: { type: string; icon: string }[];
 };
 
 //Zip codes

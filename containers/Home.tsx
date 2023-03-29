@@ -102,7 +102,7 @@ export default function Home() {
           content="Pampilmousse, pour des sorties réussies"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/logo-pampil.ico" />
       </Head>
 
       <main className="min-h-screen">
@@ -137,7 +137,7 @@ export default function Home() {
                   </Stack>
                 </div>
               ) : placesDisplayed.length === 0 ? (
-                <p className="rounded-md border p-3 text-center sm:col-start-3 sm:mt-10 sm:animate-pulse">
+                <p className="animate-pulse rounded-md border p-3 text-center sm:col-start-3 sm:mt-10">
                   Oups! Pas de lieu correspondant à la recherche 😓
                 </p>
               ) : (

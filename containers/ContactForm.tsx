@@ -63,7 +63,7 @@ function ContactForm() {
           content="Pampilmousse, pour des sorties réussies"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/logo-pampil.ico" />
       </Head>
       <main className="min-h-screen">
         <div className="bg-green-300 px-5 py-44 lg:grid lg:h-2/3 lg:grid-cols-2 lg:gap-6">

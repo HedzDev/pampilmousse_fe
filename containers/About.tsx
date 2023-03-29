@@ -11,7 +11,7 @@ function About() {
           content="Pampilmousse, pour des sorties réussies"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/logo-pampil.ico" />
       </Head>
       <main className="min-h-screen">
         <div className="flex h-screen flex-col content-center justify-center bg-yellow-400 px-10 sm:px-20">

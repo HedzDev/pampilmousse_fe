@@ -39,6 +39,7 @@ export default function Home() {
     code: number;
     name: string;
   }>(zipCodes[0]);
+  const [loading, setLoading] = useState(true);
 
   //Fetch places from API
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         setPlaces(data.places);
+        setLoading(false);
       });
   }, []);
 
@@ -127,16 +129,17 @@ export default function Home() {
               />
             </div>
 
-            <div className="relative grid w-2/3 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {placesDisplayed.length === 0 ? (
-                // <p className="rounded-md border p-3 text-center">
-                //   Oups! Pas de lieu correspondant à la recherche 😓
-                // </p>
-                <div className="flex w-screen items-center justify-center">
+            <div className="grid w-2/3 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-5">
+              {loading ? (
+                <div className="flex items-center justify-center sm:col-span-6 sm:mt-20">
                   <Stack>
-                    <CircularProgress color="error" />
+                    <CircularProgress size={80} color="error" />
                   </Stack>
                 </div>
+              ) : placesDisplayed.length === 0 ? (
+                <p className="rounded-md border p-3 text-center sm:col-start-3 sm:mt-10 sm:animate-pulse">
+                  Oups! Pas de lieu correspondant à la recherche 😓
+                </p>
               ) : (
                 placesDisplayed
               )}

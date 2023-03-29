@@ -11,9 +11,9 @@ export default function PlaceCard(props: any) {
     { type: 'Restaurant', icon: '🍽️' },
     { type: 'Bar', icon: '🍸' },
     { type: 'Café', icon: '☕️' },
-    { type: 'Musée', icon: '🎨' },
+    { type: 'Musée', icon: '🏛️' },
     { type: 'Cinéma', icon: '🎥' },
-    { type: 'Médecin', icon: '👨‍⚕️' },
+    { type: 'Médecin', icon: '🩺' },
   ];
   return (
     <>

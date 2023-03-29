@@ -127,12 +127,12 @@ export default function Home() {
               />
             </div>
 
-            <div className="relative grid w-1/2 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="relative grid w-2/3 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
               {placesDisplayed.length === 0 ? (
                 // <p className="rounded-md border p-3 text-center">
                 //   Oups! Pas de lieu correspondant à la recherche 😓
                 // </p>
-                <div className="flex items-center justify-center">
+                <div className="flex w-screen items-center justify-center">
                   <Stack>
                     <CircularProgress color="error" />
                   </Stack>

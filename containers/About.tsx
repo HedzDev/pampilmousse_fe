@@ -7,8 +7,8 @@ function About() {
       <Head>
         <title>Pampilmousse | À propos</title>
         <meta
-          name="L'histoire de Pampilmousse et de ses créateurs"
-          content="Pampilmousse, pour des sorties réussies"
+          name="description"
+          content="Pampilmousse est né dans la tête de deux parents qui avait une petite formidable ! Il lui fallait donc un site pour trouver des lieux adaptés aux enfants et aux familles, pour des sorties réussies !"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/logo-pampil.ico" />

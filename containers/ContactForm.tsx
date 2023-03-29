@@ -57,10 +57,10 @@ function ContactForm() {
   return (
     <>
       <Head>
-        <title>Pampilmousse | Contact</title>
+        <title>Pampilmousse, pour des sorties réussies | Contact</title>
         <meta
-          name="Contact form for Pampilmousse connection"
-          content="Pampilmousse, pour des sorties réussies"
+          name="description"
+          content="Contactez-nous pour nous faire part de vos suggestions !"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/logo-pampil.ico" />

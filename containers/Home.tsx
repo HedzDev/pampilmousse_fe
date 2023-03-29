@@ -98,8 +98,8 @@ export default function Home() {
       <Head>
         <title>Pampilmousse | Home</title>
         <meta
-          name="Pampilmousse, pour des sorties réussies"
-          content="Pampilmousse, pour des sorties réussies"
+          name="description"
+          content="Pampilmousse est un site qui permet de trouver des lieux adaptés aux enfants et aux familles, pour des sorties réussies !"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/logo-pampil.ico" />

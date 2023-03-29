@@ -118,8 +118,8 @@ function ContactForm() {
 }
 
 const renderAlert = () => (
-  <div className="mb-5 rounded bg-blue-100 px-4 py-3 text-center leading-normal text-blue-700">
-    <p>your message submitted successfully</p>
+  <div className="mb-5 rounded bg-blue-100 px-4 py-3 text-center leading-normal text-green-700">
+    <p>Message envoyé avec succès ✅</p>
   </div>
 );
 

@@ -139,11 +139,11 @@ export default function Header() {
           )}
         </Disclosure>
         <Image
-          src="/logo-pampil2.png"
+          src="/pampilmousse-logo.png"
           alt="logo"
-          width={200}
-          height={200}
-          className="absolute right-[45%] h-12 w-12 sm:right-20 sm:flex sm:h-20 sm:w-20"
+          width={50}
+          height={50}
+          className="absolute -top-10 right-56 h-40 w-40 sm:right-0 sm:-top-10 sm:flex sm:h-60 sm:w-60"
         />
       </nav>
     </header>

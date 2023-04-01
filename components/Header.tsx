@@ -53,7 +53,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-30 flex h-20 justify-between py-6 text-white ${bgColor}`}
+      className={`fixed top-0 left-0 right-0 z-30 flex justify-between py-14 text-white ${bgColor}`}
     >
       <nav className="space-x-7 pr-9">
         <Disclosure
@@ -143,7 +143,7 @@ export default function Header() {
           alt="logo"
           width={50}
           height={50}
-          className="absolute -top-10 right-56 h-40 w-40 sm:right-0 sm:-top-10 sm:flex sm:h-60 sm:w-60"
+          className="absolute -top-10 right-56 h-40 w-40 sm:right-0 sm:-top-16 sm:flex sm:h-60 sm:w-60"
         />
       </nav>
     </header>

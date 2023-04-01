@@ -138,13 +138,15 @@ export default function Header() {
             </>
           )}
         </Disclosure>
-        <Image
-          src="/pampilmousse-logo.png"
-          alt="logo"
-          width={50}
-          height={50}
-          className="absolute -top-10 right-56 h-40 w-40 sm:right-0 sm:-top-16 sm:flex sm:h-60 sm:w-60"
-        />
+        <Link href="/">
+          <Image
+            src="/pampilmousse-logo.png"
+            alt="logo"
+            width={50}
+            height={50}
+            className="absolute -top-10 right-[30%] h-40 w-40 sm:right-0 sm:-top-16 sm:flex sm:h-60 sm:w-60"
+          />
+        </Link>
       </nav>
     </header>
   );

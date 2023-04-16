@@ -19,7 +19,7 @@ export default function PlaceCard(props: any) {
     <>
       <a
         href={place.href}
-        className="duration:800 group rounded-md bg-red-200 p-3 transition-shadow delay-75 hover:shadow-[7px_10px_0_1px_rgb(0,0,0)]"
+        className="duration:700 group rounded-md bg-red-400 p-3 transition-shadow delay-75 hover:shadow-[7px_10px_0_1px_rgb(0,0,0)]"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -37,7 +37,7 @@ export default function PlaceCard(props: any) {
         </div>
         <h2 className="pt-2 text-lg font-medium text-gray-900">{place.name}</h2>
         <div className="py flex flex-col-reverse justify-between">
-          <p className="mt-4 w-2/3 text-xs font-medium text-gray-600">
+          <p className="mt-4 w-2/3 text-xs font-medium text-gray-200">
             {place.description}
           </p>
           <div className="flex items-center justify-between">

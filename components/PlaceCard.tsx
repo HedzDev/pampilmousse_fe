@@ -48,7 +48,7 @@ export default function PlaceCard(props: any) {
               {categoriesList.map((category: any, i: any) => {
                 if (place.categories.includes(category.type)) {
                   return (
-                    <div className="text-xl" key={i}>
+                    <div className="text-xl" key={i} title={category.type}>
                       {category.icon}
                     </div>
                   );

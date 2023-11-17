@@ -129,7 +129,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="grid w-2/3 grid-cols-1 gap-y-10 gap-x-6 pb-40 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+            <div className="grid w-2/3 grid-cols-1 gap-y-10 gap-x-6 pb-96 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
               {loading ? (
                 <div className="flex items-center justify-center sm:col-span-6 sm:mt-20">
                   <Stack>

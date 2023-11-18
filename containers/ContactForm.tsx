@@ -18,10 +18,10 @@ function ContactForm() {
 
     emailjs
       .send(
-        process.env.SERVICE_ID as string,
-        process.env.TEMPLATE_ID as string,
+        process.env.NEXT_PUBLIC_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID as string,
         values as string | any,
-        process.env.PUBLIC_KEY as string
+        process.env.NEXT_PUBLIC_PUBLIC_KEY as string
       )
       .then(
         (result) => {

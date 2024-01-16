@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import InputField from '@/components/InputField';
 import TextareaField from '@/components/TextareaField';
 import Head from 'next/head';
-import emailjs from 'emailjs-com';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 function ContactForm() {
@@ -16,27 +15,26 @@ function ContactForm() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID as string,
-        values as string | any,
-        process.env.NEXT_PUBLIC_PUBLIC_KEY as string
-      )
-      .then(
-        (result) => {
-          console.log('SUCCESS', result);
-          setValues({
-            name: '',
-            email: '',
-            message: '',
-          });
+    fetch('https://pampilmousse-be.vercel.app/email/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        if (res.status === 200) {
           setStatus('SUCCESS');
-        },
-        (error) => {
-          console.log('FAILED...', error);
         }
-      );
+        setValues({
+          name: '',
+          email: '',
+          message: '',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {

@@ -25,6 +25,8 @@ function ContactForm() {
       .then((res) => {
         if (res.status === 200) {
           setStatus('SUCCESS');
+        } else if (res.status === 400) {
+          setStatus('ERROR');
         }
         setValues({
           name: '',
@@ -38,7 +40,7 @@ function ContactForm() {
   };
 
   useEffect(() => {
-    if (status === 'SUCCESS') {
+    if (status === 'SUCCESS' || status === 'ERROR') {
       setTimeout(() => {
         setStatus('');
       }, 3000);
@@ -74,7 +76,8 @@ function ContactForm() {
             </p>
           </div>
           <div className="mt-8 rounded bg-white p-5 pt-6 pb-8 shadow-xl lg:mt-48 lg:mr-48">
-            {status && renderAlert()}
+            {status === 'SUCCESS' && renderAlert()}
+            {status === 'ERROR' && renderError()}
             <form onSubmit={handleSubmit}>
               <h3 className="mb-7 text-xl font-semibold text-gray-700">
                 Envoyez-nous un message 📨
@@ -118,6 +121,11 @@ function ContactForm() {
 const renderAlert = () => (
   <div className="mb-5 rounded bg-blue-100 px-4 py-3 text-center leading-normal text-green-700">
     <p>Message envoyé avec succès ✅</p>
+  </div>
+);
+const renderError = () => (
+  <div className="mb-5 rounded bg-blue-100 px-4 py-3 text-center leading-normal text-red-700">
+    <p>Erreur au moment de l&apos;envoi du message ❌</p>
   </div>
 );
 
